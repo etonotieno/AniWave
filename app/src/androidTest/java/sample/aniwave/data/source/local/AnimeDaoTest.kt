@@ -53,7 +53,8 @@ class AnimeDaoTest {
                     imageUrl = "url:$index",
                     title = "Anime $index",
                     releaseYear = "Year $index",
-                    rating = Random.nextDouble(0.0, 10.0)
+                    score = Random.nextDouble(0.0, 10.0),
+                    episode = 1,
                 )
             )
         }

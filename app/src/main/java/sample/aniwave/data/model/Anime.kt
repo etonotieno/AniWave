@@ -10,7 +10,8 @@ data class Anime(
     val imageUrl: String,
     val title: String,
     val releaseYear: String,
-    val rating: Double,
+    val score: Double,
+    val episode: Int,
 )
 
 fun Anime.toLocal(): LocalAnime = LocalAnime(
@@ -18,7 +19,8 @@ fun Anime.toLocal(): LocalAnime = LocalAnime(
     imageUrl = this.imageUrl,
     title = this.title,
     releaseYear = this.releaseYear,
-    rating = this.rating
+    episode = this.episode,
+    score = this.score,
 )
 
 fun List<Anime>.toLocal(): List<LocalAnime> = map(Anime::toLocal)

@@ -3,7 +3,6 @@ package sample.aniwave.data.source.local.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import sample.aniwave.data.model.Anime
-import sample.aniwave.data.source.network.model.NetworkAnime
 
 /**
  * Anime representation that will be saved locally in an [androidx.room.RoomDatabase]
@@ -15,7 +14,8 @@ data class LocalAnime(
     val imageUrl: String,
     val title: String,
     val releaseYear: String,
-    val rating: Double,
+    val score: Double,
+    val episode: Int,
 )
 
 fun LocalAnime.toExternal(): Anime {
@@ -24,19 +24,9 @@ fun LocalAnime.toExternal(): Anime {
         imageUrl = this.imageUrl,
         title = this.title,
         releaseYear = this.releaseYear,
-        rating = this.rating
+        score = this.score,
+        episode = this.episode,
     )
 }
 
 fun List<LocalAnime>.toExternal(): List<Anime> = map(LocalAnime::toExternal)
-
-fun LocalAnime.toNetwork(): NetworkAnime {
-    return NetworkAnime(
-        id = this.id,
-        imageUrl = this.imageUrl,
-        title = this.title,
-        episode = 0,
-    )
-}
-
-fun List<LocalAnime>.toNetwork(): List<NetworkAnime> = map(LocalAnime::toNetwork)

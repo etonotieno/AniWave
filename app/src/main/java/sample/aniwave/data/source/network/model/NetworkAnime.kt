@@ -1,5 +1,6 @@
 package sample.aniwave.data.source.network.model
 
+import sample.aniwave.data.model.Anime
 import sample.aniwave.data.source.local.model.LocalAnime
 
 /**
@@ -13,6 +14,8 @@ data class NetworkAnime(
     val imageUrl: String,
     val title: String,
     val episode: Int,
+    val score: Double,
+    val releaseYear: String,
 )
 
 fun NetworkAnime.toLocal(): LocalAnime {
@@ -20,9 +23,21 @@ fun NetworkAnime.toLocal(): LocalAnime {
         id = this.id,
         imageUrl = this.imageUrl,
         title = this.title,
-        releaseYear = "2020s",
-        rating = 0.0,
+        releaseYear = this.releaseYear,
+        episode = this.episode,
+        score = this.score,
     )
 }
 
 fun List<NetworkAnime>.toLocal(): List<LocalAnime> = map(NetworkAnime::toLocal)
+
+fun NetworkAnime.toExternal(): Anime {
+    return Anime(
+        id = this.id,
+        imageUrl = this.imageUrl,
+        title = this.title,
+        releaseYear = this.releaseYear,
+        episode = this.episode,
+        score = this.score,
+    )
+}

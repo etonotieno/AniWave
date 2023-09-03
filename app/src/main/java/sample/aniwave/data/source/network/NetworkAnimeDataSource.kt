@@ -5,6 +5,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import sample.aniwave.data.source.AnimeDataSource
 import sample.aniwave.data.source.network.model.NetworkAnime
+import sample.aniwave.data.source.network.model.toNetworkAnime
 import java.io.File
 import javax.inject.Inject
 
@@ -19,28 +20,15 @@ class NetworkAnimeDataSource @Inject constructor(
 ) : AnimeDataSource {
 
     suspend fun getTopAnime(): List<NetworkAnime> {
-        return animeApi.getTopAnime().anime.orEmpty().map {
-            NetworkAnime(
-                id = it.malId ?: -1,
-                imageUrl = it.images?.jpg?.imageUrl ?: "",
-                title = it.titles?.find { title -> title.type == "English" }?.title ?: "",
-                episode = it.episodes ?: -1,
-            )
-        }
+        return animeApi.getTopAnime().anime.orEmpty().toNetworkAnime()
     }
 
     suspend fun searchAnime(photo: File): NetworkAnime {
+        return searchApi.searchAnime(image = createFileMultipart(photo)).toNetworkAnime()
+    }
+
+    private fun createFileMultipart(photo: File): MultipartBody.Part {
         val requestFile = photo.asRequestBody("image/jpeg".toMediaTypeOrNull())
-        val photoPart = MultipartBody.Part.createFormData("image", photo.name, requestFile)
-
-        val result = searchApi.searchAnime(image = photoPart).result
-            ?.first()
-
-        return NetworkAnime(
-            id = result?.anilist as? Int ?: -1,
-            imageUrl = result?.image ?: "",
-            title = result?.filename ?: "",
-            episode = result?.episode as? Int ?: -1,
-        )
+        return MultipartBody.Part.createFormData("image", photo.name, requestFile)
     }
 }

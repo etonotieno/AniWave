@@ -44,3 +44,23 @@ data class NetworkAnimePhotoSearchResponse(
         val video: String?
     )
 }
+
+fun NetworkAnimePhotoSearchResponse.Result.toNetworkAnime(): NetworkAnime {
+    return NetworkAnime(
+        id = this.anilist as? Int ?: 0,
+        imageUrl = this.image.orEmpty(),
+        title = this.filename.orEmpty(),
+        episode = this.episode as? Int ?: 0,
+        // TODO: Update with real data. The Search endpoint doesn't return the score & releaseYear.
+        score = 0.0,
+        // TODO: Update with real data. The Search endpoint doesn't return the score & releaseYear.
+        releaseYear = "2023",
+    )
+}
+
+/**
+ * Convert the most similar Anime search result (sorted by similarity) to a [NetworkAnime].
+ */
+fun NetworkAnimePhotoSearchResponse.toNetworkAnime(): NetworkAnime {
+    return this.result.orEmpty().first().toNetworkAnime()
+}

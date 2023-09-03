@@ -10,7 +10,7 @@ data class NetworkAnimeResponse(
 ) {
     data class AnimeResponse(
         @SerializedName("aired")
-        val aired: Aired?,
+        val aired: Aired,
         @SerializedName("airing")
         val airing: Boolean?,
         @SerializedName("approved")
@@ -272,3 +272,24 @@ data class NetworkAnimeResponse(
         )
     }
 }
+
+fun NetworkAnimeResponse.AnimeResponse.toNetworkAnime(): NetworkAnime {
+    return NetworkAnime(
+        id = this.malId ?: 0,
+        imageUrl = this.images?.jpg?.imageUrl.orEmpty(),
+        title = this.getEnglishTitle(),
+        episode = this.episodes ?: 0,
+        score = this.score ?: 0.0,
+        releaseYear = "${this.getReleaseYear()}",
+    )
+}
+
+private fun NetworkAnimeResponse.AnimeResponse.getReleaseYear(): Int {
+    return this.year ?: this.aired.prop?.from?.year ?: 0
+}
+
+private fun NetworkAnimeResponse.AnimeResponse?.getEnglishTitle(): String =
+    this?.titles?.find { title -> title.type == "English" }?.title.orEmpty()
+
+fun List<NetworkAnimeResponse.AnimeResponse>.toNetworkAnime(): List<NetworkAnime> =
+    map { it.toNetworkAnime() }

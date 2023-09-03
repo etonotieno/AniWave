@@ -13,7 +13,8 @@ class LocalAnimeTest {
             imageUrl = "",
             title = "",
             releaseYear = "",
-            rating = 0.0
+            score = 0.0,
+            episode = 1,
         )
 
         val anime = localAnime.toExternal()
@@ -23,7 +24,8 @@ class LocalAnimeTest {
             imageUrl = "",
             title = "",
             releaseYear = "",
-            rating = 0.0
+            score = 0.0,
+            episode = 2,
         )
         assertEquals(expectedAnime, anime)
     }
