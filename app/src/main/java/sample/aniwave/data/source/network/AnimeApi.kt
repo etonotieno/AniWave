@@ -6,9 +6,12 @@ import sample.aniwave.data.source.network.model.NetworkAnimeResponse
 
 interface AnimeApi {
 
+    /**
+     * Fetch the top anime. Fetches the top 25 anime by default. The size of the result is depends
+     * on [count]
+     */
     @GET("top/anime")
     suspend fun getTopAnime(
-        @Query("page") page: Int = 0,
-        @Query("limit") limit: Int = 25,
+        @Query("limit") count: Int = 25,
     ): NetworkAnimeResponse
 }

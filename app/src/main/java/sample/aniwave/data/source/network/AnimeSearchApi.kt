@@ -9,7 +9,7 @@ import sample.aniwave.data.source.network.model.NetworkAnimePhotoSearchResponse
 interface AnimeSearchApi {
 
     @Multipart
-    @POST("/search")
+    @POST("search")
     suspend fun searchAnime(
         @Part image: MultipartBody.Part
     ): NetworkAnimePhotoSearchResponse
