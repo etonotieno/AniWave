@@ -17,6 +17,7 @@ import retrofit2.create
 import sample.aniwave.BuildConfig
 import sample.aniwave.data.source.network.AnimeApi
 import sample.aniwave.data.source.network.AnimeSearchApi
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -46,29 +47,43 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val baseUrl = ""
-
+    fun provideRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit.Builder {
         val gson = GsonBuilder()
             .serializeNulls()
             .create()
 
         return Retrofit.Builder()
-            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
-            .build()
     }
 
     @Singleton
     @Provides
-    fun provideSearchApi(retrofit: Retrofit): AnimeSearchApi {
+    @Named(TOP_ANIME)
+    fun provideAnimeRetrofit(builder: Retrofit.Builder): Retrofit {
+        return builder.baseUrl("https://api.jikan.moe/v4/").build()
+    }
+
+    @Singleton
+    @Provides
+    @Named(SEARCH_ANIME)
+    fun provideSearchAnimeRetrofit(builder: Retrofit.Builder): Retrofit {
+        return builder.baseUrl("https://api.trace.moe/").build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideSearchApi(@Named(SEARCH_ANIME) retrofit: Retrofit): AnimeSearchApi {
         return retrofit.create()
     }
 
     @Singleton
     @Provides
-    fun provideTopAnimeApi(retrofit: Retrofit): AnimeApi {
+    fun provideTopAnimeApi(@Named(TOP_ANIME) retrofit: Retrofit): AnimeApi {
         return retrofit.create()
     }
+
+
+    private const val TOP_ANIME = "TOP_ANIME"
+    private const val SEARCH_ANIME = "SEARCH_ANIME"
 }
