@@ -9,7 +9,9 @@ import sample.aniwave.data.source.local.LocalAnimeDataSource
 import sample.aniwave.data.source.local.model.LocalAnime
 import sample.aniwave.data.source.local.model.toExternal
 import sample.aniwave.data.source.network.NetworkAnimeDataSource
+import sample.aniwave.data.source.network.model.toExternal
 import sample.aniwave.data.source.network.model.toLocal
+import java.io.File
 import javax.inject.Inject
 
 class DefaultAnimeRepository @Inject constructor(
@@ -29,5 +31,9 @@ class DefaultAnimeRepository @Inject constructor(
             networkAnime.toLocal()
         }
         localAnimeDataSource.upsertAll(localAnime)
+    }
+
+    override suspend fun searchAnime(photo: File): Anime? {
+        return networkDataSource.searchAnime(photo)?.toExternal()
     }
 }

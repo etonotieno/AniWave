@@ -4,6 +4,7 @@ import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import sample.aniwave.data.model.Anime
+import java.io.File
 
 class TestAnimeRepository : AnimeRepository {
 
@@ -15,6 +16,10 @@ class TestAnimeRepository : AnimeRepository {
     }
 
     override suspend fun refresh() {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun searchAnime(photo: File): Anime? {
         TODO("Not yet implemented")
     }
 }

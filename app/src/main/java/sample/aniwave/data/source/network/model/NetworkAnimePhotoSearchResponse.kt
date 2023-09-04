@@ -27,9 +27,9 @@ data class NetworkAnimePhotoSearchResponse(
      */
     data class Result(
         @SerializedName("anilist")
-        val anilist: Any?,
+        val anilist: Int?,
         @SerializedName("episode")
-        val episode: Any?,
+        val episode: Int?,
         @SerializedName("filename")
         val filename: String?,
         @SerializedName("from")
@@ -45,24 +45,11 @@ data class NetworkAnimePhotoSearchResponse(
     )
 }
 
-fun NetworkAnimePhotoSearchResponse.Result.toNetworkAnime(): NetworkAnime {
-    return NetworkAnime(
-        id = this.anilist as? Int ?: 0,
-        imageUrl = this.image.orEmpty(),
-        title = this.filename.orEmpty(),
-        episode = this.episode as? Int ?: 0,
-        // Replace with actual values
-        score = 0.0,
-        // Replace with actual values
-        releaseYear = "2023",
-        // Replace with actual values
-        rank = 0,
-    )
-}
+fun NetworkAnimePhotoSearchResponse.Result?.getAnilistId(): Int = this?.anilist ?: 0
 
 /**
- * Convert the most similar Anime search result (sorted by similarity) to a [NetworkAnime].
+ * Get the Top Result of the most similar Anime
  */
-fun NetworkAnimePhotoSearchResponse.toNetworkAnime(): NetworkAnime {
-    return this.result.orEmpty().first().toNetworkAnime()
+fun NetworkAnimePhotoSearchResponse?.getTopResult(): NetworkAnimePhotoSearchResponse.Result? {
+    return this?.result?.sortedByDescending { it.similarity }?.first()
 }
