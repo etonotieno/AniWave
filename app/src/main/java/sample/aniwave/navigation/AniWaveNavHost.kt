@@ -1,4 +1,4 @@
-package sample.aniwave.ui.navigation
+package sample.aniwave.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

@@ -1,4 +1,4 @@
-package sample.aniwave.ui.navigation
+package sample.aniwave.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home

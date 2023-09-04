@@ -10,7 +10,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
-import sample.aniwave.ui.navigation.MainDestination
+import sample.aniwave.navigation.MainDestination
 
 private fun NavDestination?.isMainDestination(destination: MainDestination) =
     this?.hierarchy?.any {

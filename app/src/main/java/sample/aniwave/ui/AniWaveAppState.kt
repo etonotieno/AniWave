@@ -10,10 +10,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import kotlinx.coroutines.CoroutineScope
-import sample.aniwave.ui.navigation.AppNavigation
-import sample.aniwave.ui.navigation.MainDestination
-import sample.aniwave.ui.navigation.navigateToHome
-import sample.aniwave.ui.navigation.navigateToUpload
+import sample.aniwave.navigation.AppNavigation
+import sample.aniwave.navigation.MainDestination
+import sample.aniwave.navigation.navigateToHome
+import sample.aniwave.navigation.navigateToUpload
 
 class AniWaveAppState(
     val navController: NavHostController,

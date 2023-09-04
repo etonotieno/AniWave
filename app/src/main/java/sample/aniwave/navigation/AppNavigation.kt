@@ -1,4 +1,4 @@
-package sample.aniwave.ui.navigation
+package sample.aniwave.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
