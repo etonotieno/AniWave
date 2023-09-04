@@ -12,5 +12,5 @@ data class AnimeApiError(
     @SerializedName("status")
     val status: Int?,
     @SerializedName("type")
-    val type: String?
+    val type: String?,
 )

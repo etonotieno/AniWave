@@ -5,7 +5,7 @@ import kotlinx.coroutines.test.TestDispatcher
 import javax.inject.Inject
 
 class TestDispatcherProvider @Inject constructor(
-    private val testDispatcher: TestDispatcher
+    private val testDispatcher: TestDispatcher,
 ) : DispatcherProvider {
     override val main: CoroutineDispatcher
         get() = testDispatcher

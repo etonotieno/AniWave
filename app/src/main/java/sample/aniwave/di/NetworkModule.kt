@@ -83,7 +83,6 @@ object NetworkModule {
         return retrofit.create()
     }
 
-
     private const val TOP_ANIME = "TOP_ANIME"
     private const val SEARCH_ANIME = "SEARCH_ANIME"
 }

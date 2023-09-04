@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val animeRepository: AnimeRepository
+    private val animeRepository: AnimeRepository,
 ) : ViewModel() {
 
     private val _isRefreshing = MutableStateFlow(true)

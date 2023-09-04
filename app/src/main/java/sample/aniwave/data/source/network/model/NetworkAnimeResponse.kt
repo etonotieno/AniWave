@@ -6,7 +6,7 @@ data class NetworkAnimeResponse(
     @SerializedName("data")
     val anime: List<AnimeResponse>?,
     @SerializedName("pagination")
-    val pagination: Pagination?
+    val pagination: Pagination?,
 ) {
     data class AnimeResponse(
         @SerializedName("aired")
@@ -80,7 +80,7 @@ data class NetworkAnimeResponse(
         @SerializedName("url")
         val url: String?,
         @SerializedName("year")
-        val year: Int?
+        val year: Int?,
     ) {
         data class Aired(
             @SerializedName("from")
@@ -90,13 +90,13 @@ data class NetworkAnimeResponse(
             @SerializedName("string")
             val string: String?,
             @SerializedName("to")
-            val to: String?
+            val to: String?,
         ) {
             data class Prop(
                 @SerializedName("from")
                 val from: From?,
                 @SerializedName("to")
-                val to: To?
+                val to: To?,
             ) {
                 data class From(
                     @SerializedName("day")
@@ -104,7 +104,7 @@ data class NetworkAnimeResponse(
                     @SerializedName("month")
                     val month: Int?,
                     @SerializedName("year")
-                    val year: Int?
+                    val year: Int?,
                 )
 
                 data class To(
@@ -113,7 +113,7 @@ data class NetworkAnimeResponse(
                     @SerializedName("month")
                     val month: Int?,
                     @SerializedName("year")
-                    val year: Int?
+                    val year: Int?,
                 )
             }
         }
@@ -126,7 +126,7 @@ data class NetworkAnimeResponse(
             @SerializedName("time")
             val time: String?,
             @SerializedName("timezone")
-            val timezone: String?
+            val timezone: String?,
         )
 
         data class Demographic(
@@ -137,7 +137,7 @@ data class NetworkAnimeResponse(
             @SerializedName("type")
             val type: String?,
             @SerializedName("url")
-            val url: String?
+            val url: String?,
         )
 
         data class Genre(
@@ -148,14 +148,14 @@ data class NetworkAnimeResponse(
             @SerializedName("type")
             val type: String?,
             @SerializedName("url")
-            val url: String?
+            val url: String?,
         )
 
         data class Images(
             @SerializedName("jpg")
             val jpg: Jpg?,
             @SerializedName("webp")
-            val webp: Webp?
+            val webp: Webp?,
         ) {
             data class Jpg(
                 @SerializedName("image_url")
@@ -163,7 +163,7 @@ data class NetworkAnimeResponse(
                 @SerializedName("large_image_url")
                 val largeImageUrl: String?,
                 @SerializedName("small_image_url")
-                val smallImageUrl: String?
+                val smallImageUrl: String?,
             )
 
             data class Webp(
@@ -172,7 +172,7 @@ data class NetworkAnimeResponse(
                 @SerializedName("large_image_url")
                 val largeImageUrl: String?,
                 @SerializedName("small_image_url")
-                val smallImageUrl: String?
+                val smallImageUrl: String?,
             )
         }
 
@@ -184,7 +184,7 @@ data class NetworkAnimeResponse(
             @SerializedName("type")
             val type: String?,
             @SerializedName("url")
-            val url: String?
+            val url: String?,
         )
 
         data class Producer(
@@ -195,7 +195,7 @@ data class NetworkAnimeResponse(
             @SerializedName("type")
             val type: String?,
             @SerializedName("url")
-            val url: String?
+            val url: String?,
         )
 
         data class Studio(
@@ -206,7 +206,7 @@ data class NetworkAnimeResponse(
             @SerializedName("type")
             val type: String?,
             @SerializedName("url")
-            val url: String?
+            val url: String?,
         )
 
         data class Theme(
@@ -217,14 +217,14 @@ data class NetworkAnimeResponse(
             @SerializedName("type")
             val type: String?,
             @SerializedName("url")
-            val url: String?
+            val url: String?,
         )
 
         data class Title(
             @SerializedName("title")
             val title: String?,
             @SerializedName("type")
-            val type: String?
+            val type: String?,
         )
 
         data class Trailer(
@@ -235,7 +235,7 @@ data class NetworkAnimeResponse(
             @SerializedName("url")
             val url: String?,
             @SerializedName("youtube_id")
-            val youtubeId: String?
+            val youtubeId: String?,
         ) {
             data class Images(
                 @SerializedName("image_url")
@@ -247,7 +247,7 @@ data class NetworkAnimeResponse(
                 @SerializedName("medium_image_url")
                 val mediumImageUrl: String?,
                 @SerializedName("small_image_url")
-                val smallImageUrl: String?
+                val smallImageUrl: String?,
             )
         }
     }
@@ -260,7 +260,7 @@ data class NetworkAnimeResponse(
         @SerializedName("items")
         val items: Items?,
         @SerializedName("last_visible_page")
-        val lastVisiblePage: Int?
+        val lastVisiblePage: Int?,
     ) {
         data class Items(
             @SerializedName("count")
@@ -268,7 +268,7 @@ data class NetworkAnimeResponse(
             @SerializedName("per_page")
             val perPage: Int?,
             @SerializedName("total")
-            val total: Int?
+            val total: Int?,
         )
     }
 }

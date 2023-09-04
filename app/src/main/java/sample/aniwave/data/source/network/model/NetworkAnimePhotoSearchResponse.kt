@@ -13,7 +13,7 @@ data class NetworkAnimePhotoSearchResponse(
     @SerializedName("frameCount")
     val frameCount: Int?,
     @SerializedName("result")
-    val result: List<Result>?
+    val result: List<Result>?,
 ) {
     /**
      *
@@ -41,7 +41,7 @@ data class NetworkAnimePhotoSearchResponse(
         @SerializedName("to")
         val to: Double?,
         @SerializedName("video")
-        val video: String?
+        val video: String?,
     )
 }
 
@@ -51,9 +51,7 @@ fun NetworkAnimePhotoSearchResponse.Result.toNetworkAnime(): NetworkAnime {
         imageUrl = this.image.orEmpty(),
         title = this.filename.orEmpty(),
         episode = this.episode as? Int ?: 0,
-        // TODO: Update with real data. The Search endpoint doesn't return the score & releaseYear.
         score = 0.0,
-        // TODO: Update with real data. The Search endpoint doesn't return the score & releaseYear.
         releaseYear = "2023",
     )
 }

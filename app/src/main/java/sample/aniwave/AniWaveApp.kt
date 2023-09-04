@@ -12,11 +12,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import sample.aniwave.ui.AniWaveAppState
-import sample.aniwave.ui.components.AniWaveNavBar
 import sample.aniwave.navigation.AniWaveNavHost
 import sample.aniwave.navigation.AppNavigation
 import sample.aniwave.navigation.MainDestination
+import sample.aniwave.ui.AniWaveAppState
+import sample.aniwave.ui.components.AniWaveNavBar
 import sample.aniwave.ui.rememberAniWaveAppState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,9 +44,9 @@ fun AniWaveApp(
                         if (destination != null) {
                             Text(text = stringResource(destination.displayTextId))
                         }
-                    }
+                    },
                 )
-            }
+            },
         ) { padding ->
             Column(modifier = Modifier.padding(padding)) {
                 AniWaveNavHost(

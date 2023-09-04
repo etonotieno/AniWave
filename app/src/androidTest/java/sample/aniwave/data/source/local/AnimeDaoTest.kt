@@ -18,7 +18,7 @@ class AnimeDaoTest {
     fun setUp() {
         database = Room.inMemoryDatabaseBuilder(
             getApplicationContext(),
-            AniWaveDatabase::class.java
+            AniWaveDatabase::class.java,
         ).allowMainThreadQueries().build()
     }
 
@@ -55,7 +55,7 @@ class AnimeDaoTest {
                     releaseYear = "Year $index",
                     score = Random.nextDouble(0.0, 10.0),
                     episode = 1,
-                )
+                ),
             )
         }
 

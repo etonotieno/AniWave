@@ -11,6 +11,6 @@ interface AnimeSearchApi {
     @Multipart
     @POST("search")
     suspend fun searchAnime(
-        @Part image: MultipartBody.Part
+        @Part image: MultipartBody.Part,
     ): NetworkAnimePhotoSearchResponse
 }

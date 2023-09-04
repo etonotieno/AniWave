@@ -35,5 +35,4 @@ class AnimeRepositoryTest {
 //        val localAnime = localDataSource.observeAll().first()
 //        assertEquals(networkAnime.toLocal(), localAnime)
     }
-
 }

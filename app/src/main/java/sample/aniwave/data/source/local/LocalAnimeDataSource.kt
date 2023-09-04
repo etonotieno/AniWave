@@ -9,7 +9,7 @@ import javax.inject.Inject
  * [LocalAnime] data source backed [AnimeDao]
  */
 class LocalAnimeDataSource @Inject constructor(
-    private val animeDao: AnimeDao
+    private val animeDao: AnimeDao,
 ) : AnimeDataSource {
 
     fun observeAll(): Flow<List<LocalAnime>> = animeDao.observeAll()

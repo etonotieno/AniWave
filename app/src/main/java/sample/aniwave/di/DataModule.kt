@@ -18,12 +18,12 @@ object DataModule {
     @Singleton
     @Provides
     fun provideAniWaveDatabase(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): AniWaveDatabase {
         return Room.databaseBuilder(
             context,
             AniWaveDatabase::class.java,
-            "aniwave-database"
+            "aniwave-database",
         ).build()
     }
 

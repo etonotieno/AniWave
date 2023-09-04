@@ -43,7 +43,7 @@ import sample.aniwave.ui.theme.AniWaveTheme
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val refreshing by viewModel.isRefreshing.collectAsStateWithLifecycle()
@@ -53,23 +53,23 @@ fun HomeScreen(
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier,
     state: HomeFeedUiState,
     refreshing: Boolean,
-    onRefresh: () -> Unit
+    onRefresh: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val pullRefreshState = rememberPullRefreshState(refreshing, onRefresh)
 
     Box(
-        Modifier
+        modifier
             .fillMaxSize()
-            .pullRefresh(pullRefreshState)
+            .pullRefresh(pullRefreshState),
     ) {
         if (!refreshing) {
             Column(
-                modifier = modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 when (state) {
                     is HomeFeedUiState.Error -> {
@@ -91,13 +91,13 @@ fun HomeScreen(
 }
 
 @Composable
-fun AnimeItems(anime: List<Anime>) {
+fun AnimeItems(anime: List<Anime>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         items(anime) { item ->
             AnimeItem(anime = item)
@@ -106,9 +106,9 @@ fun AnimeItems(anime: List<Anime>) {
 }
 
 @Composable
-fun AnimeItem(anime: Anime) {
+fun AnimeItem(anime: Anime, modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
@@ -142,7 +142,7 @@ fun AnimeItem(anime: Anime) {
 
 @Preview
 @Composable
-fun AnimeItemPreview() {
+private fun AnimeItemPreview() {
     AniWaveTheme {
         AnimeItem(anime = sampleAnime[0])
     }
@@ -150,7 +150,7 @@ fun AnimeItemPreview() {
 
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable
-fun AnimeItemsPreview() {
+private fun AnimeItemsPreview() {
     AniWaveTheme {
         AnimeItems(anime = sampleAnime)
     }
@@ -179,7 +179,7 @@ private fun HomeScreenPreview() {
         HomeScreen(
             state = HomeFeedUiState.Success(anime = sampleAnime),
             refreshing = false,
-            onRefresh = {}
+            onRefresh = {},
         )
     }
 }

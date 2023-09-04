@@ -13,7 +13,7 @@ fun UploadPhotoScreen(modifier: Modifier = Modifier) {
     Column(modifier) {
         Text(
             text = "Search by uploading a Screenshot of the anime",
-            modifier = Modifier.testTag("search_upload")
+            modifier = Modifier.testTag("search_upload"),
         )
     }
 }
