@@ -16,6 +16,7 @@ data class NetworkAnime(
     val episode: Int,
     val score: Double,
     val releaseYear: String,
+    val rank: Int,
 )
 
 fun NetworkAnime.toLocal(): LocalAnime {
@@ -26,6 +27,7 @@ fun NetworkAnime.toLocal(): LocalAnime {
         releaseYear = this.releaseYear,
         episode = this.episode,
         score = this.score,
+        rank = this.rank,
     )
 }
 
@@ -37,7 +39,8 @@ fun NetworkAnime.toExternal(): Anime {
         imageUrl = this.imageUrl,
         title = this.title,
         releaseYear = this.releaseYear,
-        episode = this.episode,
         score = this.score,
+        episode = this.episode,
+        rank = this.rank,
     )
 }

@@ -20,7 +20,7 @@ class NetworkAnimeDataSource @Inject constructor(
 ) : AnimeDataSource {
 
     suspend fun getTopAnime(): List<NetworkAnime> {
-        return animeApi.getTopAnime().anime.orEmpty().toNetworkAnime()
+        return animeApi.getTopAnime().anime.orEmpty().sortedBy { it.rank ?: 0 }.toNetworkAnime()
     }
 
     suspend fun searchAnime(photo: File): NetworkAnime {

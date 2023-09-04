@@ -281,6 +281,7 @@ fun NetworkAnimeResponse.AnimeResponse.toNetworkAnime(): NetworkAnime {
         episode = this.episodes ?: 0,
         score = this.score ?: 0.0,
         releaseYear = "${this.getReleaseYear()}",
+        rank = this.rank ?: 0,
     )
 }
 

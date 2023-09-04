@@ -16,6 +16,7 @@ data class LocalAnime(
     val releaseYear: String,
     val score: Double,
     val episode: Int,
+    val rank: Int,
 )
 
 fun LocalAnime.toExternal(): Anime {
@@ -26,6 +27,7 @@ fun LocalAnime.toExternal(): Anime {
         releaseYear = this.releaseYear,
         score = this.score,
         episode = this.episode,
+        rank = this.rank,
     )
 }
 

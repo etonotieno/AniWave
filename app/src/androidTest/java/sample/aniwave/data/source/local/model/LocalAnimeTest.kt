@@ -15,6 +15,7 @@ class LocalAnimeTest {
             releaseYear = "",
             score = 0.0,
             episode = 1,
+            rank = 1,
         )
 
         val anime = localAnime.toExternal()
@@ -26,6 +27,7 @@ class LocalAnimeTest {
             releaseYear = "",
             score = 0.0,
             episode = 1,
+            rank = 2,
         )
         assertEquals(expectedAnime, anime)
     }

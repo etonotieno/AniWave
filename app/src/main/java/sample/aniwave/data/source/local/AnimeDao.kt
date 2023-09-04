@@ -13,7 +13,7 @@ interface AnimeDao {
      * Each time the data changes a new item is emitted to the Flow allowing the callers to listen
      * to changes, removing the need to poll the data.
      */
-    @Query("SELECT * FROM anime")
+    @Query("SELECT * FROM anime ORDER BY rank ASC")
     fun observeAll(): Flow<List<LocalAnime>>
 
     /**

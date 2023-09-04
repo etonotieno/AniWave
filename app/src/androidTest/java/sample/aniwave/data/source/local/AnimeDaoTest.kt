@@ -54,7 +54,8 @@ class AnimeDaoTest {
                     title = "Anime $index",
                     releaseYear = "Year $index",
                     score = Random.nextDouble(0.0, 10.0),
-                    episode = 1,
+                    episode = index,
+                    rank = index,
                 ),
             )
         }

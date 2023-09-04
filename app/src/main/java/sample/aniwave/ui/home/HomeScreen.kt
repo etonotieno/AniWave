@@ -192,6 +192,7 @@ private val sampleAnime = listOf(
         releaseYear = "2009",
         score = 9.1,
         episode = 1,
+        rank = 1,
     ),
     Anime(
         id = 5114,
@@ -200,6 +201,7 @@ private val sampleAnime = listOf(
         releaseYear = "2009",
         score = 9.1,
         episode = 1,
+        rank = 2,
     ),
     Anime(
         id = 5114,
@@ -208,6 +210,7 @@ private val sampleAnime = listOf(
         releaseYear = "2009",
         score = 9.1,
         episode = 1,
+        rank = 3,
     ),
     Anime(
         id = 5114,
@@ -216,6 +219,7 @@ private val sampleAnime = listOf(
         releaseYear = "2009",
         score = 9.1,
         episode = 1,
+        rank = 4,
     ),
     Anime(
         id = 5114,
@@ -224,6 +228,7 @@ private val sampleAnime = listOf(
         releaseYear = "2009",
         score = 9.1,
         episode = 1,
+        rank = 5,
     ),
     Anime(
         id = 5114,
@@ -232,6 +237,7 @@ private val sampleAnime = listOf(
         releaseYear = "2009",
         score = 9.1,
         episode = 1,
+        rank = 6,
     ),
     Anime(
         id = 5114,
@@ -240,5 +246,6 @@ private val sampleAnime = listOf(
         releaseYear = "2009",
         score = 9.1,
         episode = 1,
+        rank = 7,
     ),
 )

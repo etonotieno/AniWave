@@ -51,8 +51,12 @@ fun NetworkAnimePhotoSearchResponse.Result.toNetworkAnime(): NetworkAnime {
         imageUrl = this.image.orEmpty(),
         title = this.filename.orEmpty(),
         episode = this.episode as? Int ?: 0,
+        // Replace with actual values
         score = 0.0,
+        // Replace with actual values
         releaseYear = "2023",
+        // Replace with actual values
+        rank = 0,
     )
 }
 
