@@ -25,7 +25,7 @@ class LocalAnimeTest {
             title = "",
             releaseYear = "",
             score = 0.0,
-            episode = 2,
+            episode = 1,
         )
         assertEquals(expectedAnime, anime)
     }

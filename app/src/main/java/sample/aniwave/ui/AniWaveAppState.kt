@@ -13,7 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import sample.aniwave.navigation.AppNavigation
 import sample.aniwave.navigation.MainDestination
 import sample.aniwave.navigation.navigateToHome
-import sample.aniwave.navigation.navigateToUpload
+import sample.aniwave.navigation.navigateToSearch
 
 class AniWaveAppState(
     val navController: NavHostController,
@@ -22,7 +22,7 @@ class AniWaveAppState(
     val currentMainDestination: MainDestination?
         @Composable get() = when (currentDestination?.route) {
             AppNavigation.Home.route -> MainDestination.HOME
-            AppNavigation.Upload.route -> MainDestination.UPLOAD
+            AppNavigation.Search.route -> MainDestination.SEARCH
             else -> null
         }
 
@@ -40,7 +40,7 @@ class AniWaveAppState(
 
         when (destination) {
             MainDestination.HOME -> navController.navigateToHome(navOptions)
-            MainDestination.UPLOAD -> navController.navigateToUpload(navOptions)
+            MainDestination.SEARCH -> navController.navigateToSearch(navOptions)
         }
     }
 }

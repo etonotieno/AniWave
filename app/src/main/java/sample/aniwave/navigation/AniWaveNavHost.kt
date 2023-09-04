@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import sample.aniwave.ui.AniWaveAppState
 import sample.aniwave.ui.home.HomeScreen
-import sample.aniwave.ui.upload.UploadPhotoScreen
+import sample.aniwave.ui.search.SearchAnimeScreen
 
 @Composable
 fun AniWaveNavHost(
@@ -22,8 +22,8 @@ fun AniWaveNavHost(
         composable(AppNavigation.Home.route) {
             HomeScreen()
         }
-        composable(AppNavigation.Upload.route) {
-            UploadPhotoScreen()
+        composable(AppNavigation.Search.route) {
+            SearchAnimeScreen()
         }
     }
 }

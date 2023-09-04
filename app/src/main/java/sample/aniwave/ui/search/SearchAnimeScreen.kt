@@ -1,4 +1,4 @@
-package sample.aniwave.ui.upload
+package sample.aniwave.ui.search
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import sample.aniwave.ui.theme.AniWaveTheme
 
 @Composable
-fun UploadPhotoScreen(modifier: Modifier = Modifier) {
+fun SearchAnimeScreen(modifier: Modifier = Modifier) {
     Column(modifier) {
         Text(
             text = "Search by uploading a Screenshot of the anime",
@@ -20,8 +20,8 @@ fun UploadPhotoScreen(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-private fun UploadPhotoScreenPreview() {
+private fun SearchPhotoScreenPreview() {
     AniWaveTheme {
-        UploadPhotoScreen()
+        SearchAnimeScreen()
     }
 }

@@ -7,11 +7,11 @@ fun NavController.navigateToHome(navOptions: NavOptions? = null) {
     this.navigate(AppNavigation.Home.route, navOptions)
 }
 
-fun NavController.navigateToUpload(navOptions: NavOptions? = null) {
-    this.navigate(AppNavigation.Upload.route, navOptions)
+fun NavController.navigateToSearch(navOptions: NavOptions? = null) {
+    this.navigate(AppNavigation.Search.route, navOptions)
 }
 
 enum class AppNavigation(val route: String) {
     Home("home"),
-    Upload("upload"),
+    Search("search"),
 }
