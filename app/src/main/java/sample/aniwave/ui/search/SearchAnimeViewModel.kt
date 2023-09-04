@@ -2,16 +2,21 @@ package sample.aniwave.ui.search
 
 import android.content.ContentResolver
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import sample.aniwave.data.FileUtils
 import sample.aniwave.data.model.Anime
 import sample.aniwave.data.repository.AnimeRepository
+import sample.aniwave.data.source.network.convertErrorBody
+import sample.aniwave.data.source.network.model.AnimeApiError
 import java.io.File
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,12 +38,25 @@ class SearchAnimeViewModel @Inject constructor(
                 if (anime != null) {
                     _uiState.emit(SearchUiState.Success(anime))
                 } else {
-                    _uiState.emit(SearchUiState.Error("Unable to find a matching Anime"))
+                    _uiState.emit(SearchUiState.Error(ERROR_NO_MATCH))
                 }
-            } catch (t: Throwable) {
+            } catch (e: HttpException) {
+                Log.e(TAG, "SearchAnime HttpException", e)
+
+                val error = convertErrorBody<AnimeApiError>(e)
+                val message = error?.message ?: ERROR_MESSAGE
+                _uiState.emit(SearchUiState.Error(message))
+            } catch (e: IOException) {
+                Log.e(TAG, "SearchAnime IOException", e)
                 _uiState.emit(SearchUiState.Error())
             }
         }
+    }
+
+    companion object {
+        private const val TAG = "SearchAnimeViewModel"
+        private const val ERROR_MESSAGE = "An error occurred while loading anime"
+        private const val ERROR_NO_MATCH = "Unable to find a matching Anime"
     }
 }
 
