@@ -10,6 +10,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import kotlinx.coroutines.CoroutineScope
+import sample.aniwave.ui.navigation.AppNavigation
 import sample.aniwave.ui.navigation.MainDestination
 import sample.aniwave.ui.navigation.navigateToHome
 import sample.aniwave.ui.navigation.navigateToUpload
@@ -18,6 +19,13 @@ class AniWaveAppState(
     val navController: NavHostController,
     val coroutineScope: CoroutineScope,
 ) {
+    val currentMainDestination: MainDestination?
+        @Composable get() = when (currentDestination?.route) {
+            AppNavigation.Home.route -> MainDestination.HOME
+            AppNavigation.Upload.route -> MainDestination.UPLOAD
+            else -> null
+        }
+
     val currentDestination: NavDestination?
         @Composable get() = navController.currentBackStackEntryAsState().value?.destination
 
