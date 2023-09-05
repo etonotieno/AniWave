@@ -78,7 +78,10 @@ fun HomeScreen(
                     }
 
                     is HomeFeedUiState.Success -> {
-                        AnimeItems(anime = state.anime)
+                        if (state.anime.isEmpty())
+                            Text(text = "Top animes were not found")
+                        else
+                            AnimeItems(anime = state.anime)
                     }
 
                     HomeFeedUiState.Loading -> {}
@@ -115,7 +118,7 @@ fun AnimeItem(anime: Anime, modifier: Modifier = Modifier) {
                 .data(anime.imageUrl)
                 .crossfade(true)
                 .build(),
-            placeholder = painterResource(R.drawable.ic_launcher_background),
+            placeholder = painterResource(R.drawable.ic_image_background),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier

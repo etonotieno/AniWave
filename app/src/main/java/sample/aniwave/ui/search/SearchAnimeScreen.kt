@@ -105,7 +105,7 @@ fun SearchAnimeScreen(
                 val asyncPainter = rememberAsyncImagePainter(
                     model = ImageRequest.Builder(LocalContext.current)
                         .data(state.anime.imageUrl)
-                        .placeholder(R.drawable.ic_launcher_background)
+                        .placeholder(R.drawable.ic_image_background)
                         .crossfade(true)
                         .build(),
                 )

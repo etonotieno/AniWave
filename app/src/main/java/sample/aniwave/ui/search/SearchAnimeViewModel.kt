@@ -52,6 +52,6 @@ class SearchAnimeViewModel @Inject constructor(
     companion object {
         private const val TAG = "SearchAnimeViewModel"
         private const val ERROR_MESSAGE = "An error occurred while loading anime"
-        private const val ERROR_NO_MATCH = "Unable to find a matching Anime"
+        private const val ERROR_NO_MATCH = "Unable to find a matching anime"
     }
 }
