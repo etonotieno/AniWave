@@ -1,7 +1,5 @@
 package sample.aniwave.ui.search
 
-import android.content.ContentResolver
-import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,8 +8,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
-import sample.aniwave.data.FileUtils
-import sample.aniwave.data.model.Anime
 import sample.aniwave.data.repository.AnimeRepository
 import sample.aniwave.data.source.network.convertErrorBody
 import sample.aniwave.data.source.network.model.AnimeApiError
@@ -28,11 +24,11 @@ class SearchAnimeViewModel @Inject constructor(
     val uiState: StateFlow<SearchUiState>
         get() = _uiState
 
-    fun searchAnime(resolver: ContentResolver, uri: Uri, file: File) {
+    fun searchAnime(writeToFile: () -> Unit, file: File) {
         viewModelScope.launch {
             _uiState.emit(SearchUiState.Loading)
             try {
-                FileUtils.copyStreamToFile(resolver.openInputStream(uri), file)
+                writeToFile()
 
                 val anime = animeRepository.searchAnime(file)
                 if (anime != null) {

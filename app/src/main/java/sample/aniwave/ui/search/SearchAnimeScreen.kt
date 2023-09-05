@@ -49,7 +49,12 @@ fun SearchAnimeScreen(
         state = uiState,
         onSearch = { uri ->
             val file = FileUtils.createFile(context)
-            viewModel.searchAnime(resolver = context.contentResolver, uri = uri, file = file)
+            viewModel.searchAnime(
+                writeToFile = {
+                    FileUtils.copyStreamToFile(context.contentResolver.openInputStream(uri), file)
+                },
+                file = file,
+            )
         },
     )
 }
