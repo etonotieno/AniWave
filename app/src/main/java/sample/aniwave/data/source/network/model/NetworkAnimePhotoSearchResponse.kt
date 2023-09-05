@@ -47,9 +47,28 @@ data class NetworkAnimePhotoSearchResponse(
 
 fun NetworkAnimePhotoSearchResponse.Result?.getAnilistId(): Int = this?.anilist ?: 0
 
+fun NetworkAnimePhotoSearchResponse.getAnilistId(): Int = getTopResult().getAnilistId()
+
 /**
  * Get the Top Result of the most similar Anime
  */
-fun NetworkAnimePhotoSearchResponse?.getTopResult(): NetworkAnimePhotoSearchResponse.Result? {
-    return this?.result?.sortedByDescending { it.similarity }?.first()
+fun NetworkAnimePhotoSearchResponse.getTopResult(): NetworkAnimePhotoSearchResponse.Result? {
+    return this.result?.sortedByDescending { it.similarity }?.first()
+}
+
+fun NetworkAnimePhotoSearchResponse.toNetworkAnime(
+    response: NetworkAnimeResponse.AnimeResponse?
+): NetworkAnime? {
+    // Override the Episode & imageUrl to return the data from AnimeSearchApi
+    val result = getTopResult() ?: return null
+    val item = response ?: return null
+    return NetworkAnime(
+        id = result.getAnilistId(),
+        imageUrl = result.image.orEmpty(),
+        episode = result.episode ?: 0,
+        title = item.getEnglishTitle(),
+        score = item.score ?: 0.0,
+        releaseYear = "${item.getReleaseYear()}",
+        rank = item.rank ?: 0,
+    )
 }

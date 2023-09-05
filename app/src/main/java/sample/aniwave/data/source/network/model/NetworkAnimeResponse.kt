@@ -285,12 +285,12 @@ fun NetworkAnimeResponse.AnimeResponse.toNetworkAnime(): NetworkAnime {
     )
 }
 
-private fun NetworkAnimeResponse.AnimeResponse.getReleaseYear(): Int {
+fun NetworkAnimeResponse.AnimeResponse.getReleaseYear(): Int {
     return this.year ?: this.aired.prop?.from?.year ?: 0
 }
 
-private fun NetworkAnimeResponse.AnimeResponse?.getEnglishTitle(): String =
-    this?.titles?.find { title -> title.type == "English" }?.title.orEmpty()
+fun NetworkAnimeResponse.AnimeResponse.getEnglishTitle(): String =
+    this.titles?.find { title -> title.type == "English" }?.title.orEmpty()
 
 fun List<NetworkAnimeResponse.AnimeResponse>.toNetworkAnime(): List<NetworkAnime> =
     map { it.toNetworkAnime() }
