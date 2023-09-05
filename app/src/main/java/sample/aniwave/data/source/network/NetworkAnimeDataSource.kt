@@ -5,7 +5,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import sample.aniwave.data.source.AnimeDataSource
 import sample.aniwave.data.source.network.model.NetworkAnime
-import sample.aniwave.data.source.network.model.getAnilistId
 import sample.aniwave.data.source.network.model.toNetworkAnime
 import java.io.File
 import javax.inject.Inject
@@ -24,12 +23,8 @@ class NetworkAnimeDataSource @Inject constructor(
         return animeApi.getTopAnime().anime.orEmpty().sortedBy { it.rank ?: 0 }.toNetworkAnime()
     }
 
-    suspend fun searchAnime(photo: File): NetworkAnime? {
-        val result =
-            searchApi.searchAnime(image = createFileMultipart(photo))
-        val item = animeApi.getAnime(result.getAnilistId()).result
-        return result.toNetworkAnime(item)
-    }
+    suspend fun searchAnime(photo: File): NetworkAnime? =
+        searchApi.searchAnime(image = createFileMultipart(photo)).toNetworkAnime()
 
     private fun createFileMultipart(photo: File): MultipartBody.Part {
         val requestFile = photo.asRequestBody("image/jpeg".toMediaTypeOrNull())

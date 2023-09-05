@@ -27,7 +27,7 @@ data class NetworkAnimePhotoSearchResponse(
      */
     data class Result(
         @SerializedName("anilist")
-        val anilist: Int?,
+        val anilist: Anilist?,
         @SerializedName("episode")
         val episode: Int?,
         @SerializedName("filename")
@@ -42,12 +42,30 @@ data class NetworkAnimePhotoSearchResponse(
         val to: Double?,
         @SerializedName("video")
         val video: String?,
-    )
+    ) {
+        data class Anilist(
+            @SerializedName("id")
+            val id: Int?,
+            @SerializedName("idMal")
+            val idMal: Int?,
+            @SerializedName("isAdult")
+            val isAdult: Boolean?,
+            @SerializedName("synonyms")
+            val synonyms: List<String?>?,
+            @SerializedName("title")
+            val title: Title?
+        ) {
+            data class Title(
+                @SerializedName("english")
+                val english: String?,
+                @SerializedName("native")
+                val native: String?,
+                @SerializedName("romaji")
+                val romaji: String?
+            )
+        }
+    }
 }
-
-fun NetworkAnimePhotoSearchResponse.Result?.getAnilistId(): Int = this?.anilist ?: 0
-
-fun NetworkAnimePhotoSearchResponse.getAnilistId(): Int = getTopResult().getAnilistId()
 
 /**
  * Get the Top Result of the most similar Anime
@@ -56,19 +74,16 @@ fun NetworkAnimePhotoSearchResponse.getTopResult(): NetworkAnimePhotoSearchRespo
     return this.result?.sortedByDescending { it.similarity }?.first()
 }
 
-fun NetworkAnimePhotoSearchResponse.toNetworkAnime(
-    response: NetworkAnimeResponse.AnimeResponse?
-): NetworkAnime? {
-    // Override the Episode & imageUrl to return the data from AnimeSearchApi
+fun NetworkAnimePhotoSearchResponse.toNetworkAnime(): NetworkAnime? {
     val result = getTopResult() ?: return null
-    val item = response ?: return null
+    val anilist = result.anilist
     return NetworkAnime(
-        id = result.getAnilistId(),
+        id = anilist?.idMal ?: 0,
         imageUrl = result.image.orEmpty(),
         episode = result.episode ?: 0,
-        title = item.getEnglishTitle(),
-        score = item.score ?: 0.0,
-        releaseYear = "${item.getReleaseYear()}",
-        rank = item.rank ?: 0,
+        title = anilist?.title?.english.orEmpty(),
+        score = 0.0,
+        releaseYear = "",
+        rank = 0,
     )
 }
