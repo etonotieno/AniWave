@@ -33,6 +33,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import sample.aniwave.R
 import sample.aniwave.data.FileUtils
 import sample.aniwave.ui.theme.AniWaveTheme
 
@@ -104,6 +105,8 @@ fun SearchAnimeScreen(
                 val asyncPainter = rememberAsyncImagePainter(
                     model = ImageRequest.Builder(LocalContext.current)
                         .data(state.anime.imageUrl)
+                        .placeholder(R.drawable.ic_launcher_background)
+                        .crossfade(true)
                         .build(),
                 )
 
