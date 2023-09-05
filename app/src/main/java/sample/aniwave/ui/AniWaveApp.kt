@@ -1,4 +1,4 @@
-package sample.aniwave
+package sample.aniwave.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,9 +15,7 @@ import androidx.compose.ui.res.stringResource
 import sample.aniwave.navigation.AniWaveNavHost
 import sample.aniwave.navigation.AppNavigation
 import sample.aniwave.navigation.MainDestination
-import sample.aniwave.ui.AniWaveAppState
 import sample.aniwave.ui.components.AniWaveNavBar
-import sample.aniwave.ui.rememberAniWaveAppState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

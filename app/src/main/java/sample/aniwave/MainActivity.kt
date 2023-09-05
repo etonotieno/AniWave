@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import dagger.hilt.android.AndroidEntryPoint
+import sample.aniwave.ui.AniWaveApp
 import sample.aniwave.ui.theme.AniWaveTheme
 
 @AndroidEntryPoint
