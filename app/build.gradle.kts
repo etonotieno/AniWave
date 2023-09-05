@@ -107,9 +107,13 @@ dependencies {
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.47")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.47")
 
+    testImplementation("androidx.navigation:navigation-testing:2.7.1")
+
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
     testImplementation("junit:junit:4.13.2")
+
+    androidTestImplementation("androidx.navigation:navigation-testing:2.7.1")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

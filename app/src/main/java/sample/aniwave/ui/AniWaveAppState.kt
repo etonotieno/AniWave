@@ -2,14 +2,12 @@ package sample.aniwave.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
-import kotlinx.coroutines.CoroutineScope
 import sample.aniwave.navigation.AppNavigation
 import sample.aniwave.navigation.MainDestination
 import sample.aniwave.navigation.navigateToHome
@@ -17,8 +15,9 @@ import sample.aniwave.navigation.navigateToSearch
 
 class AniWaveAppState(
     val navController: NavHostController,
-    val coroutineScope: CoroutineScope,
 ) {
+    val mainDestinations: List<MainDestination> = MainDestination.values().toList()
+
     val currentMainDestination: MainDestination?
         @Composable get() = when (currentDestination?.route) {
             AppNavigation.Home.route -> MainDestination.HOME
@@ -47,10 +46,9 @@ class AniWaveAppState(
 
 @Composable
 fun rememberAniWaveAppState(
-    coroutineScope: CoroutineScope = rememberCoroutineScope(),
     navController: NavHostController = rememberNavController(),
 ): AniWaveAppState {
-    return remember(navController, coroutineScope) {
-        AniWaveAppState(navController, coroutineScope)
+    return remember(navController) {
+        AniWaveAppState(navController)
     }
 }
