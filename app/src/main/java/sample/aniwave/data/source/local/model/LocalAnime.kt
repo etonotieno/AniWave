@@ -13,7 +13,7 @@ data class LocalAnime(
     val id: Int,
     val imageUrl: String,
     val title: String,
-    val releaseYear: String,
+    val releaseYear: Int,
     val score: Double,
     val episode: Int,
     val rank: Int,

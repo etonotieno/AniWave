@@ -19,7 +19,6 @@ data class NetworkAnimePhotoSearchResponse(
      *
      * @param episode The extracted episode number from filename. Episode can be null because it is
      * just a result of parsing the filename with [aniep](https://github.com/soruly/aniep)
-     * @param filename The filename of the file where the match is found
      * @param anilist The matching Anilist ID or Anilist info. (Can be an Int or Object/Any)
      * @param similarity Similarity compared to the search image. Values are in the range of 0-1.
      * Similarity <90% (0.9) are most likely incorrect results
@@ -30,28 +29,16 @@ data class NetworkAnimePhotoSearchResponse(
         val anilist: Anilist?,
         @SerializedName("episode")
         val episode: Int?,
-        @SerializedName("filename")
-        val filename: String?,
-        @SerializedName("from")
-        val from: Double?,
         @SerializedName("image")
         val image: String?,
         @SerializedName("similarity")
         val similarity: Double?,
-        @SerializedName("to")
-        val to: Double?,
-        @SerializedName("video")
-        val video: String?,
     ) {
         data class Anilist(
             @SerializedName("id")
             val id: Int?,
             @SerializedName("idMal")
             val idMal: Int?,
-            @SerializedName("isAdult")
-            val isAdult: Boolean?,
-            @SerializedName("synonyms")
-            val synonyms: List<String?>?,
             @SerializedName("title")
             val title: Title?
         ) {
@@ -83,7 +70,7 @@ fun NetworkAnimePhotoSearchResponse.toNetworkAnime(): NetworkAnime? {
         episode = result.episode ?: 0,
         title = anilist?.title?.english.orEmpty(),
         score = 0.0,
-        releaseYear = "",
+        releaseYear = 2023,
         rank = 0,
     )
 }

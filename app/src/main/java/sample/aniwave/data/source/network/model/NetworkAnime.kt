@@ -15,7 +15,7 @@ data class NetworkAnime(
     val title: String,
     val episode: Int,
     val score: Double,
-    val releaseYear: String,
+    val releaseYear: Int,
     val rank: Int,
 )
 
