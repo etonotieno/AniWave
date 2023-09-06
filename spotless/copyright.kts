@@ -1,11 +1,11 @@
 /*
- * Copyright 2023 Eton Otieno
+ * Copyright $YEAR Eton Otieno
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,13 +13,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package sample.aniwave.ui.search
-
-import sample.aniwave.data.model.Anime
-
-sealed interface SearchUiState {
-    data object Initial : SearchUiState
-    data object Loading : SearchUiState
-    data class Error(val message: String? = null) : SearchUiState
-    data class Success(val anime: Anime) : SearchUiState
-}
