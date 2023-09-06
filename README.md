@@ -16,7 +16,16 @@ Build System: Gradle
 The app has `debug` & `release` build variants. `debug` is used for normal development workflows
 while `release` has R8 turned on. Use the release variant for a real world user journey.
 
-# Appetize
+# Releases
+
+### GitHub Releases
+
+<img src="docs/screenshots/github-releases.png"/>
+
+You can find the latest apk in the GitHub Releases section. The latest release can be
+found [here](https://github.com/etonotieno/AniWave/releases/latest)
+
+### Appetize
 
 You can run the app on [Appetize.io](https://appetize.io/app/65qlvo72l5dbek24773yncba2u)
 
@@ -41,8 +50,8 @@ It is divided into two parts:
 # UI
 
 The app UI is built with [Jetpack Compose](https://developer.android.com/jetpack/compose) Material3
-components
+components.
 
 # Static Checks
 
-To apply Kotlin style guidance and fix code formatting issues run `Static Checks`
+To apply Kotlin style guidance and fix code formatting issues run `Static Checks`.
