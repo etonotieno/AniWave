@@ -42,3 +42,7 @@ It is divided into two parts:
 
 The app UI is built with [Jetpack Compose](https://developer.android.com/jetpack/compose) Material3
 components
+
+# Static Checks
+
+To apply Kotlin style guidance and fix code formatting issues run `Static Checks`
