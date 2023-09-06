@@ -55,3 +55,7 @@ components.
 # Static Checks
 
 To apply Kotlin style guidance and fix code formatting issues run `Static Checks`.
+
+# Testing
+
+To run the instrumented tests, change the run configuration to `Aniwave Instrumented Tests`
